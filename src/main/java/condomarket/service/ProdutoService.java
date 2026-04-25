@@ -26,6 +26,17 @@ public class ProdutoService {
         return repository.save(produto);
     }
 
+    public Optional<Produto> atualizar(Long id, Produto produtoAtualizado) {
+    return repository.findById(id).map(produtoExistente -> {
+        produtoExistente.setNome(produtoAtualizado.getNome());
+        produtoExistente.setDescricao(produtoAtualizado.getDescricao());
+        produtoExistente.setPreco(produtoAtualizado.getPreco());
+        produtoExistente.setCategoria(produtoAtualizado.getCategoria());
+        produtoExistente.setUsuario(produtoAtualizado.getUsuario());
+        return repository.save(produtoExistente);
+    });
+}
+
     public void deletar(Long id) {
         repository.deleteById(id);
     }

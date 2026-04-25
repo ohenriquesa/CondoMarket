@@ -32,6 +32,13 @@ public class AvaliacaoController {
         return service.salvar(avaliacao);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Avaliacao> atualizar(@PathVariable Long id, @RequestBody Avaliacao avaliacaoAtualizada) {
+        return service.atualizar(id, avaliacaoAtualizada)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+}
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         service.deletar(id);

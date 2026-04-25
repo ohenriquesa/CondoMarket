@@ -26,6 +26,13 @@ public class CategoriaService {
         return repository.save(categoria);
     }
 
+    public Optional<Categoria> atualizar(Long id, Categoria categoriaAtualizada) {
+    return repository.findById(id).map(categoriaExistente -> {
+        categoriaExistente.setNome(categoriaAtualizada.getNome());
+        return repository.save(categoriaExistente);
+    });
+}
+
     public void deletar(Long id) {
         repository.deleteById(id);
     }

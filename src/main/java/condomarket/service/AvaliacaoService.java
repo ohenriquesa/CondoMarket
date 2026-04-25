@@ -26,6 +26,16 @@ public class AvaliacaoService {
         return repository.save(avaliacao);
     }
 
+    public Optional<Avaliacao> atualizar(Long id, Avaliacao avaliacaoAtualizada) {
+    return repository.findById(id).map(avaliacaoExistente -> {
+        avaliacaoExistente.setNota(avaliacaoAtualizada.getNota());
+        avaliacaoExistente.setComentario(avaliacaoAtualizada.getComentario());
+        avaliacaoExistente.setPedido(avaliacaoAtualizada.getPedido());
+        avaliacaoExistente.setUsuario(avaliacaoAtualizada.getUsuario());
+        return repository.save(avaliacaoExistente);
+    });
+}
+
     public void deletar(Long id) {
         repository.deleteById(id);
     }
