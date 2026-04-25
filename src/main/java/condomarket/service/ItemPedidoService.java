@@ -26,6 +26,15 @@ public class ItemPedidoService {
         return repository.save(itemPedido);
     }
 
+    public Optional<ItemPedido> atualizar(Long id, ItemPedido itemAtualizado) {
+    return repository.findById(id).map(itemExistente -> {
+        itemExistente.setQuantidade(itemAtualizado.getQuantidade());
+        itemExistente.setPedido(itemAtualizado.getPedido());
+        itemExistente.setProduto(itemAtualizado.getProduto());
+        return repository.save(itemExistente);
+    });
+}
+
     public void deletar(Long id) {
         repository.deleteById(id);
     }

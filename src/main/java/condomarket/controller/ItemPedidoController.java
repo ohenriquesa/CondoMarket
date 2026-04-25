@@ -32,6 +32,13 @@ public class ItemPedidoController {
         return service.salvar(itemPedido);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ItemPedido> atualizar(@PathVariable Long id, @RequestBody ItemPedido itemAtualizado) {
+        return service.atualizar(id, itemAtualizado)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+}
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         service.deletar(id);

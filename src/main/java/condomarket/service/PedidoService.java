@@ -25,6 +25,14 @@ public class PedidoService {
     public Pedido salvar(Pedido pedido) {
         return repository.save(pedido);
     }
+    
+    public Optional<Pedido> atualizar(Long id, Pedido pedidoAtualizado) {
+    return repository.findById(id).map(pedidoExistente -> {
+        pedidoExistente.setStatus(pedidoAtualizado.getStatus());
+        pedidoExistente.setUsuario(pedidoAtualizado.getUsuario());
+        return repository.save(pedidoExistente);
+    });
+}
 
     public void deletar(Long id) {
         repository.deleteById(id);

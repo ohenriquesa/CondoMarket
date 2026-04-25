@@ -32,6 +32,13 @@ public class PedidoController {
         return service.salvar(pedido);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Pedido> atualizar(@PathVariable Long id, @RequestBody Pedido pedidoAtualizado) {
+        return service.atualizar(id, pedidoAtualizado)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         service.deletar(id);
