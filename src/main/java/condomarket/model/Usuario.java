@@ -1,45 +1,34 @@
 package condomarket.model;
 
 import jakarta.persistence.*;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import condomarket.enums.EnumTipoUsuario;
 
 @Entity
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idUsuario;
+    private Long id;
 
     private String nome;
+
     private String email;
-    private String senha;
-    private String apartamento;
-    private String tipoUsuario;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "usuario")
-    private List<Produto> produtos;
+    @Enumerated(EnumType.STRING) // 🔥 IMPORTANTE
+    private EnumTipoUsuario tipo;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "usuario")
-    private List<Pedido> pedidos;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "usuario")
-    private List<Avaliacao> avaliacoes;
-
-    public Long getIdUsuario() {
-        return idUsuario;
+    public Usuario() {
     }
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
+
+    // Getters e Setters
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -47,49 +36,16 @@ public class Usuario {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public EnumTipoUsuario getTipo() {
+        return tipo;
     }
 
-    public String getApartamento() {
-        return apartamento;
-    }
-    public void setApartamento(String apartamento) {
-        this.apartamento = apartamento;
-    }
-
-    public String getTipoUsuario() {
-        return tipoUsuario;
-    }
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
-    }
-
-    public List<Produto> getProdutos() {
-        return produtos;
-    }
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
-    }
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
-    }
-
-    public List<Avaliacao> getAvaliacoes() {
-        return avaliacoes;
-    }
-    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
-        this.avaliacoes = avaliacoes;
+    public void setTipo(EnumTipoUsuario tipo) {
+        this.tipo = tipo;
     }
 }
