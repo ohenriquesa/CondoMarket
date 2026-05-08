@@ -1,53 +1,52 @@
 package condomarket.model;
 
 import jakarta.persistence.*;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import condomarket.enums.EnumStatusDePedido;
 
 @Entity
 public class Pedido {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idPedido;
+    private Long id;
 
-    private String status;
+    private String descricao;
 
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
+    private Double valor;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "pedido")
-    private List<ItemPedido> itens;
+    @Enumerated(EnumType.STRING) // 🔥 MUITO IMPORTANTE
+    private EnumStatusDePedido status;
 
-    public Long getIdPedido() {
-        return idPedido;
-    }
-    public void setIdPedido(Long idPedido) {
-        this.idPedido = idPedido;
+    // Construtor vazio (obrigatório pro JPA)
+    public Pedido() {
     }
 
-    public String getStatus() {
+    // Getters e Setters
+    public Long getId() {
+        return id;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Double getValor() {
+        return valor;
+    }
+
+    public void setValor(Double valor) {
+        this.valor = valor;
+    }
+
+    public EnumStatusDePedido getStatus() {
         return status;
     }
-    public void setStatus(String status) {
+
+    public void setStatus(EnumStatusDePedido status) {
         this.status = status;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
-
-    public List<ItemPedido> getItens() {
-        return itens;
-    }
-    public void setItens(List<ItemPedido> itens) {
-        this.itens = itens;
     }
 }

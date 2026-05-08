@@ -1,7 +1,6 @@
 package condomarket.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -14,6 +13,7 @@ public class Produto {
     private String nome;
     private String descricao;
     private Double preco;
+    private String foto;
 
     @JsonIgnore
     @ManyToOne
@@ -28,6 +28,7 @@ public class Produto {
     public Long getIdProduto() {
         return idProduto;
     }
+
     public void setIdProduto(Long idProduto) {
         this.idProduto = idProduto;
     }
@@ -35,6 +36,7 @@ public class Produto {
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -42,6 +44,7 @@ public class Produto {
     public String getDescricao() {
         return descricao;
     }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -49,13 +52,23 @@ public class Produto {
     public Double getPreco() {
         return preco;
     }
+
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     public Usuario getUsuario() {
         return usuario;
     }
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
@@ -63,6 +76,7 @@ public class Produto {
     public Categoria getCategoria() {
         return categoria;
     }
+
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }

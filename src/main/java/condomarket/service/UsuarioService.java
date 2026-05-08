@@ -1,12 +1,13 @@
 package condomarket.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import condomarket.model.Usuario;
-import condomarket.repository.UsuarioRepository;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import condomarket.model.Usuario;
+import condomarket.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
@@ -27,15 +28,13 @@ public class UsuarioService {
     }
 
     public Optional<Usuario> atualizar(Long id, Usuario usuarioAtualizado) {
-    return repository.findById(id).map(usuarioExistente -> {
-        usuarioExistente.setNome(usuarioAtualizado.getNome());
-        usuarioExistente.setEmail(usuarioAtualizado.getEmail());
-        usuarioExistente.setSenha(usuarioAtualizado.getSenha());
-        usuarioExistente.setApartamento(usuarioAtualizado.getApartamento());
-        usuarioExistente.setTipoUsuario(usuarioAtualizado.getTipoUsuario());
-        return repository.save(usuarioExistente);
-    });
-}
+        return repository.findById(id).map(usuario -> {
+            usuario.setNome(usuarioAtualizado.getNome());
+            usuario.setEmail(usuarioAtualizado.getEmail());
+            usuario.setTipo(usuarioAtualizado.getTipo());
+            return repository.save(usuario);
+        });
+    }
 
     public void deletar(Long id) {
         repository.deleteById(id);
