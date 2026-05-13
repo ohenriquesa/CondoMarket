@@ -39,4 +39,8 @@ public class UsuarioService {
     public void deletar(Long id) {
         repository.deleteById(id);
     }
+    
+    public List<Usuario> buscarPorNome(String nome) {
+        return repository.findByNomeContainingIgnoreCase(nome);
+    }
 }

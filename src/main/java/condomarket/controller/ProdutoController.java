@@ -19,6 +19,11 @@ public class ProdutoController {
     public List<Produto> listar() {
         return service.listar();
     }
+    
+    @GetMapping("/nome/{nome}")
+    public List<Produto> buscarPorNome(@PathVariable String nome) {
+        return service.buscarPorNome(nome);
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Produto> buscarPorId(@PathVariable Long id) {
