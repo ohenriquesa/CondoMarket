@@ -14,13 +14,13 @@ public class Usuario {
 
     private String email;
 
-    @Enumerated(EnumType.STRING) // 🔥 IMPORTANTE
+    @Enumerated(EnumType.STRING) 
     private EnumTipoUsuario tipo;
 
     public Usuario() {
     }
 
-    // Getters e Setters
+    
     public Long getId() {
         return id;
     }

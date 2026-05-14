@@ -14,14 +14,14 @@ public class Pedido {
 
     private Double valor;
 
-    @Enumerated(EnumType.STRING) // 🔥 MUITO IMPORTANTE
+    @Enumerated(EnumType.STRING) 
     private EnumStatusDePedido status;
 
-    // Construtor vazio (obrigatório pro JPA)
+    
     public Pedido() {
     }
 
-    // Getters e Setters
+    
     public Long getId() {
         return id;
     }
