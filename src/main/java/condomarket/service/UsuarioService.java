@@ -31,6 +31,8 @@ public class UsuarioService {
         return repository.findById(id).map(usuario -> {
             usuario.setNome(usuarioAtualizado.getNome());
             usuario.setEmail(usuarioAtualizado.getEmail());
+            usuario.setSenha(usuarioAtualizado.getSenha());
+            usuario.setApartamento(usuarioAtualizado.getApartamento());
             usuario.setTipo(usuarioAtualizado.getTipo());
             return repository.save(usuario);
         });
@@ -39,7 +41,7 @@ public class UsuarioService {
     public void deletar(Long id) {
         repository.deleteById(id);
     }
-    
+
     public List<Usuario> buscarPorNome(String nome) {
         return repository.findByNomeContainingIgnoreCase(nome);
     }

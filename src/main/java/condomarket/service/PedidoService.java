@@ -32,6 +32,9 @@ public class PedidoService {
             pedido.setDescricao(pedidoAtualizado.getDescricao());
             pedido.setValor(pedidoAtualizado.getValor());
             pedido.setStatus(pedidoAtualizado.getStatus());
+            if (pedidoAtualizado.getUsuario() != null) {
+                pedido.setUsuario(pedidoAtualizado.getUsuario());
+            }
             return repository.save(pedido);
         });
     }
