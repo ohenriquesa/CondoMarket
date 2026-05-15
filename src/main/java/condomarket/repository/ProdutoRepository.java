@@ -9,4 +9,6 @@ import condomarket.model.Produto;
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
     List<Produto> findByNomeContainingIgnoreCase(String nome);
+    List<Produto> findByCategoria_IdCategoria(Long idCategoria);
 }
+

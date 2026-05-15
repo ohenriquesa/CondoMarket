@@ -49,4 +49,9 @@ public class ProdutoController {
         service.deletar(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/categoria/{idCategoria}")
+    public List<Produto> buscarPorCategoria(@PathVariable Long idCategoria) {
+        return service.buscarPorCategoria(idCategoria);
+}
 }
