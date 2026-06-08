@@ -50,10 +50,3 @@ http://localhost:5173
 Email: admin@email.com
 Senha: 123456
 ```
-
-## Observações
-
-- `backend/target/` é gerada pelo Maven e não precisa subir para o GitHub.
-- `backend/data/` guarda o banco local H2 e não precisa subir para o GitHub.
-- `frontend/node_modules/` é gerada pelo `npm install` e não precisa subir para o GitHub.
-- `frontend/dist/` é gerada pelo build do frontend e não precisa subir para o GitHub.
